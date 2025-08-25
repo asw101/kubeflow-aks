@@ -1,15 +1,14 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: istio-ingressgateway-certs
-  namespace: istio-system
+  name: kubeflow-tls-cert
+  namespace: app-routing-system
 spec:
   # Secret names are always required.
-  secretName: istio-ingressgateway-certs
- 
+  secretName: kubeflow-tls-secret
   # At least one of a DNS Name, URI, or IP address is required.
-  #dnsNames:
-  #  - uniquednsname.eastus.cloudapp.azure.com
+  dnsNames:
+    - my-kubeflow-cluster.$LOCATION.cloudapp.azure.com
   ipAddresses:
     - {{ IP_ADDRESS }}
   isCA: true
@@ -22,3 +21,4 @@ spec:
     # This is optional since cert-manager will default to this value however
     # if you are using an external issuer, change this to that issuer group.
     group: cert-manager.io  
+

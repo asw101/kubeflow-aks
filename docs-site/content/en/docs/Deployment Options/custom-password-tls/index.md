@@ -4,7 +4,7 @@ tags: ["test", "sample", "docs"]
 title: "Deploy Kubeflow with Password, Ingress and TLS"
 linkTitle: "Deploy TLS and Custom Password"
 date: 2025-08-23
-weight: 4
+weight: 3
 description: >
   Deploying Kubeflow on AKS with Custom Password and TLS
 ---
