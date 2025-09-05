@@ -60,7 +60,7 @@ To add more users
 ```bash
 kubectl patch secret dex-passwords -n auth --type='json' -p='[{"op": "replace", "path": "/data/DEX_USER2_PASSWORD", "value":"'$(echo -n 'REPLACE_WITH_HASH' | base64)'"}]'
 ```
-3. Apply config map and restsrt deployment
+3. Apply config map and restart deployment
 
 ```bash
 kubectl apply -f deployments/vanilla/dex-config-map.yaml
