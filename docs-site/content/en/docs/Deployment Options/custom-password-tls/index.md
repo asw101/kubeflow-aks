@@ -241,7 +241,7 @@ Wait for the certificate to be ready:
 kubectl wait --for=condition=Ready certificate/kubeflow-tls-cert -n istio-system --timeout=300s
 ```
 
-## Step 3. Configure Ingress
+### Step 3: Configure Ingress
 Create and apply an ingress manifest to expose the Kubeflow components:
 
 ```bash
