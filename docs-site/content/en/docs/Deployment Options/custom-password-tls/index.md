@@ -168,7 +168,7 @@ There are couple options to expose your Kubeflow cluster with proper HTTPS using
 
 We can create a self-signed certificate for the Kubeflow with IP available on Nginx ingress LoadBalancer or assign DNS Label 
 
-## Step 1. Find IP or DNS Label of Nginx ingress
+### Step 1: Find IP or DNS Label of Nginx ingress
 
 - Obtain Nginx IP
 
