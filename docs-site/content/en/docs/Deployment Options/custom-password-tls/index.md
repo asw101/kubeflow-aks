@@ -18,7 +18,7 @@ You can follow these same instructions to deploy Kubeflow on a non-automatic AKS
 
 ## DeployAKS Automatic
 ## Deploy AKS Automatic
-
+## Deploy AKS Automatic
 Use the [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) to deploy an [AKS Automatic](https://learn.microsoft.com/en-us/azure/aks/intro-aks-automatic) cluster. 
 
 {{< alert color="primary" >}}💡Note: In order to complete this deployment, you will need to have either  following permissions on Resource Group:
