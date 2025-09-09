@@ -20,7 +20,7 @@ You can follow these same instructions to deploy Kubeflow on a non-automatic AKS
 
 This deployment option is for testing only. To deploy with TLS, and change default password, please click here: [Deploy kubeflow with TLS]({{< ref "/docs/Deployment Options/custom-password-tls" >}}).
 
-{{< alert color="warning" >}}⚠️ Warning: This deployment option would require users to have access to the kubernetes cluster. For a better deployment option that doesn't have this restriction, uses TLS and shows how to change default password, please head to the [Deploy kubeflow with TLS] option.{{< /alert >}}
+{{< alert color="warning" >}}⚠️ Warning: This deployment option would require users to have access to the kubernetes cluster. For a better deployment option that doesn't have this restriction, uses TLS and Ingress please head to the [Deploy kubeflow with TLS] option.{{< /alert >}}
 
 
 ## Deploy AKS Automatic
@@ -78,12 +78,7 @@ az feature register --namespace Microsoft.ContainerService --name AutomaticSKUPr
 {{< /alert >}}
 
 ### Connect to AKS Automatic Cluster
-
-Install kubectl using the Azure CLI, if required.
-```bash
-az aks install-cli
-```
-Get the credentials for your AKS cluster
+After the cluster is created, you can connect to it using the Azure CLI. The following command retrieves the credentials for your AKS cluster and configures `kubectl` to use them.
 
 ```bash
 az aks get-credentials --resource-group $RGNAME --name $CLUSTERNAME
@@ -113,20 +108,6 @@ Change directory into the newly cloned directory
 cd kubeflow-aks
 ```
 
-## Install kustomize
-
-Install kustomize using the installation script:
-
-```bash
-curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh" | bash
-sudo mv ./kustomize /usr/local/bin/kustomize
-```
-
-Verify the installation:
-
-```bash
-kustomize version
-```
 
 ## Run Kubeflow Kustomize deployment
 
@@ -174,6 +155,7 @@ kubectl port-forward svc/istio-ingressgateway -n istio-system 8080:80
 
 Finally, open [http://localhost:8080](http://localhost:8080/) and login with the default user's credentials. The default email address is `user@example.com` and the default password is `12341234`
 
+
 ## Testing the deployment with a Notebook server
 
 You can test that the deployments worked by creating a new Notebook server using the GUI.
@@ -199,6 +181,9 @@ You can test that the deployments worked by creating a new Notebook server using
 1. Click on "Connect" to access your jupyter lab
 1. Under Notebook, click on Python 3 to access your jupyter notebook and start coding
 
-## Next steps
 
-[Secure your kubeflow cluster using TLS and stronger Password] deployment option.
+
+## Next steps
+To connect to Kubeflow applications you need to set up HTTPS. The reason is that many of our web applications (e.g., Tensorboard Web Application, Jupyter Web Application, Katib UI) use Secure Cookies, so accessing Kubeflow with HTTP over a non-localhost domain does not work.
+
+[Deploy with TLS]({{< ref "/docs/Deployment Options/custom-password-tls" >}}) deployment option.
